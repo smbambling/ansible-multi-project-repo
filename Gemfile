@@ -1,0 +1,7 @@
+source 'https://rubygems.org'
+gem 'docker-api'
+gem 'rake'
+gem 'rubocop'
+gem 'serverspec'
+gem 'rspec_junit_formatter'
+gem 'rspec-retry'

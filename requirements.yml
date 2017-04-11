@@ -1,0 +1,4 @@
+- src: git+ssh://git@bitbucket.arin.net:7999/ghm/ansible-role-ntp.git
+  name: geerlingguy.ntp
+  version: 32308cacfb8 # tag: 1.4.0
+  path: galaxy_roles/
