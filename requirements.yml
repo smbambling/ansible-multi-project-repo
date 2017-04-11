@@ -1,4 +1,14 @@
-- src: git+ssh://git@bitbucket.arin.net:7999/ghm/ansible-role-ntp.git
+- src: https://github.com/geerlingguy/ansible-role-ntp.git
   name: geerlingguy.ntp
   version: 32308cacfb8 # tag: 1.4.0
   path: galaxy_roles/
+
+- src: https://github.com/smbambling/ansible-role-apache.git
+  name: smbambling.apache
+  version: a221268c517 # tag: v0.0.2
+  path: galaxy_roles
+
+- src: https://github.com/nickhammond/ansible-logrotate.git
+  name: nickhammond.logrotate
+  version: e7a498d # branch master
+  path: galaxy_roles

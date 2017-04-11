@@ -6,7 +6,7 @@
 
 ### Ansible ###
 *.retry
-galaxy_roles/
+galaxy_roles/*
 !galaxy_roles/.gitkeep
 
 ### Python ###
