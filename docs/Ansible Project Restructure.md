@@ -3,39 +3,40 @@
 Isolation with minimal duplication
 
 ## Benefits
-  * Helps to simplify the understanding of project setup/configuration
-  * Exhibits the use of multiple Playbooks with a project
-    * Provisioning
-    * Configuration
-    * Adhoc
-  * Isolation of project variables
-  * Limits the potential for variable collision
-  * Limits the inventory scope per project
-  * Inventory Flexibility per project
-  * Additional safeguard against accidental playbook execution
-  * Helps to limit the need for code duplication across roles/projects
-  * Assist with repeatable configuration synchronization
+
+* Helps to simplify the understanding of project setup/configuration
+* Exhibits the use of multiple Playbooks with a project
+  * Provisioning
+  * Configuration
+  * Adhoc
+* Isolation of project variables
+* Limits the potential for variable collision
+* Limits the inventory scope per project
+* Inventory Flexibility per project
+* Additional safeguard against accidental playbook execution
+* Helps to limit the need for code duplication across roles/projects
+* Assist with repeatable configuration synchronization
 
 ## Terminology
 
-**role**: A collection of task, template, handlers and variables focused on a specific goal.
+**role**: A collection of task, template, handlers and variables
+focused on a specific goal.
 
-**external galaxy role**: These are are roles that are fetched from an external source such as the Ansible Galaxy or VCS repository (GitHub).  
+**external galaxy role**: These are are roles that are fetched from an external source such as the Ansible Galaxy or VCS repository (GitHub).
 
 **corporate role**: These are roles that are fetch from an internal source such as a local VCS repository.  These are are often business specific and proprietary.
 
 **wrapper role**: These are joint roles that combine tasks for more then one application suite.  Often a combination of one or more external and/or corporate roles.
 
-**project**: A logical collection of Playbooks, roles, inventory, group_vars and host_vars for a given corporate function.
+**project**: A logical collection of Playbooks, roles, inventory, groupi\_vars and host\_vars for a given corporate function.
 
-  * The inclusion of a node in multiple projects inventories should be limited, as the scope of the projects my overlap and provide undesired configuration. 
+  * The inclusion of a node in multiple projects inventories should be limited, as the scope of the projects my overlap and provide undesired configuration.
 
 **site**: Different location often geographically distributed, such as multiple data centers.
 
 **environment**: Also sometimes called tiers in a software deployment pipeline.  Often consist of development,Integration,SI/QA,Stage,Test,Prod
 
 **domain**: A logical grouping defined by network address space, often further segregated by sub-domains.  Such as foo.dev.example.com, foo.ci.example.dev, foo.qa.example.dev
-
 
 ## Ansible Projects
 
@@ -113,8 +114,7 @@ projects/
 
 Another approach when using multistage environments is to have a single inventory with groups based on environments.
 
-
-### Simple Inventory 
+### Simple Inventory
 
 Below is a simple inventory layout, allows control over nodes within a project both via `site` and further sorted by `even`/`odd` nodes that could allow for a rolling update within each site.
 
@@ -133,13 +133,13 @@ web1.sitea.example.com
 
 [siteb:children]
 siteb_odd
-siteb_even  
+siteb_even
 
 [siteb_odd]
 web1.siteb.example.com
 
 [siteb_even]
-web2.siteb.example.com     
+web2.siteb.example.com
 ```
 
 More complex inventories may be desired or required. To aid in the readability and understanding of larger inventory set the option to have an inventory directory with multiple inventory files.
@@ -147,7 +147,7 @@ More complex inventories may be desired or required. To aid in the readability a
 
 ## Multiple Playbooks
 
-Multiple Playbooks can easily be categorized per project. Providing a single location for all Playbooks associated for a given project.  
+Multiple Playbooks can easily be categorized per project. Providing a single location for all Playbooks associated for a given project.
 
 Examples of Playbooks for a project maybe for for the following actions:
   - Provisioning
@@ -169,19 +169,19 @@ Think of this in the term of lego bricks and combining them to build a house. If
 
 A example of a wrapper role could a a `common`/`base` role.  This is one that get applied to a large set if not all of your infrastructure to apply the following standard configurations:
 
-  * User account management (Operational Staff)
-  * **Monitoring Role**, to install a needed application and configure a standard set of system monitoring/metric collection checks
-  * **DNS Client Role**, to manage systems resolv.conf entries
-  * **NTP Role**, to manage systems NTP configurations
-  * **Postfix Role**, to manage a system default mail configuration.
+* User account management (Operational Staff)
+* **Monitoring Role**, to install a needed application and configure a standard set of system monitoring/metric collection checks
+* **DNS Client Role**, to manage systems resolv.conf entries
+* **NTP Role**, to manage systems NTP configurations
+* **Postfix Role**, to manage a system default mail configuration.
 
 Another example of a wrapper role could be Apache.  This wrapper role could be a combination of the following:
 
-  * **Apache Role**, to install/configure the Apache service
-  * **Logrotate Role**, to manage the rotation, compression,
-       removal of log files for the Apache service
-  * **Monitoring Tasks**, to provide a standard set of Apache application monitoring/metric collection
-  * **Security Tasks**, to provide any set of standard configurations not handled by the included Apache Role
+* **Apache Role**, to install/configure the Apache service
+* **Logrotate Role**, to manage the rotation, compression,
+     removal of log files for the Apache service
+* **Monitoring Tasks**, to provide a standard set of Apache application monitoring/metric collection
+* **Security Tasks**, to provide any set of standard configurations not handled by the included Apache Role
 
 ## Ansible Code Snippets
 
@@ -197,24 +197,19 @@ Yelp provides a a framework for [pre-commit](http://pre-commit.com) hooks that h
 
 These can be used to run the following tests:
 
-  - Ansible-lint
-  - YAML syntax
-  - Python jinja2 syntax
-  - Playbook syntax
+- Ansible-lint
+- YAML syntax
+- Python jinja2 syntax
+- Playbook syntax
 
 ### Pre-Recieve Hooks
 
 Similar to pre-commit hooks installed locally in a users development environment, pre-recieve hooks can be put in place to prevent commits to the central VCS repository that could potentially cause failures in a CI environment or fail to run against a host.
 
-## References 
+## References
 
 https://www.digitalocean.com/community/tutorials/how-to-manage-multistage-environments-with-ansible
 
 https://fale.io/blog/2017/03/01/ansible-inventories/
 
 https://nylas.com/blog/graduating-past-playbooks/
-
-
-        
-      
-    
