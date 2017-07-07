@@ -46,7 +46,7 @@ vagrant:
 verifier:
   name: serverspec
 ansible:
-  config_file: ../../projects/base/ansible.cfg
+  config_file: ../../ansible.cfg
   playbook: ../../projects/base/playbooks/full_base.yml
   group_vars:
     all:

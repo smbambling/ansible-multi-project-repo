@@ -1,0 +1,4 @@
+---
+  - name: Include resolv_conf role
+    include_role:
+      name: resolv_conf
