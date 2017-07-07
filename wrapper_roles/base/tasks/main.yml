@@ -1,0 +1,24 @@
+---
+  - name: Include OS-Specific variables/overrides
+    include_vars: "{{ item }}"
+    with_first_found:
+      - "{{ ansible_distribution }}.yml"
+      - "{{ ansible_os_family }}.yml"
+      - "main.yml"
+
+  - name: Install libselinux-python bindings
+    package:
+      name: libselinux-python
+      state: present
+    when: ansible_distribution == 'CentOS'
+    become: true
+
+  - name: Include resolv_conf role
+    include_role:
+      name: resolv_conf
+      defaults_from: main.yml
+
+  - name: Include accounts role
+    include_role:
+      name: accounts
+      defaults_from: main.yml

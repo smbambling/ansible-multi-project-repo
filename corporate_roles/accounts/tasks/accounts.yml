@@ -1,0 +1,4 @@
+---
+  - name: Include accounts/create.yml
+    include: accounts/create.yml
+    with_items: "{{ accounts_users }}"

@@ -5,7 +5,7 @@ resolv_conf_file: /etc/resolv.conf
 # Default nameservers
 resolv_conf_nameserver:
   - 8.8.8.8
-  - 8.8.4.4 
+  - 8.8.4.4
 
 # Default domain
 resolv_conf_domain:
@@ -19,4 +19,3 @@ resolv_conf_sortlist: []
 
 # Default options
 resolv_conf_options: []
-

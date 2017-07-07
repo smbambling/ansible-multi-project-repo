@@ -1,0 +1,36 @@
+---
+  - name: "Create group {{ item.group_name | default(item.name) }}"
+    group:
+      name: "{{ item.group_name | default(item.name) }}"
+      gid: "{{ item.gid | default(item.uid) }}"
+      state: "{{ item.state | default('present') }}"
+      system: "{{ item.is_system | default(False) }}"
+
+  - name: "Create user {{ item.name }}"
+    user:
+      append: "{{ item.append | default(False) }}"
+      name: "{{ item.name }}"
+      uid: "{{ item.uid }}"
+      state: "{{ item.state | default('present') }}"
+      comment: "{{ item.comment }}"
+      createhome: "{{ item.createhome | default(True) }}"
+      group: "{{ item.group_name | default(item.name) }}"
+      groups: "{{ (item.groups | default([])) | join(',') }}"
+      home: "{{ item.home | default(omit) }}"
+      shell: "{{ item.shell | default(omit) }}"
+      remove: "{{ item.remove | default(False) }}"
+      skeleton: "{{ item.skeleton | default(omit) }}"
+      system: "{{ item.is_system | default(False) }}"
+
+
+  - debug:
+      var: "{{ accounts_users | selectattr('authorized_keys', 'defined') | list}}"
+
+  - name: "Manage SSH authorized keys for {{ item.name }}"
+    authorized_key:
+      key: "{{ item.1.key }}"
+      state: "{{ item.1.state | default(omit) }}"
+      user: "{{ item.0.name }}"
+    with_subelements:
+      - "{{ accounts_users }}"
+      - authorized_keys
