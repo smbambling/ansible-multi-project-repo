@@ -1,5 +1,7 @@
 # Ansible Multi-Project Directory Structure
 
+Isolation with minimal duplication
+
 ## Benefits
   * Helps to simplify the understanding of project setup/configuration
   * Exhibits the use of multiple Playbooks with a project
