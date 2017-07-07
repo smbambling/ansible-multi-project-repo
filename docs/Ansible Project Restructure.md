@@ -22,21 +22,30 @@ Isolation with minimal duplication
 **role**: A collection of task, template, handlers and variables
 focused on a specific goal.
 
-**external galaxy role**: These are are roles that are fetched from an external source such as the Ansible Galaxy or VCS repository (GitHub).
+**external galaxy role**: These are are roles that are fetched from an
+external source such as the Ansible Galaxy or VCS repository (GitHub).
 
-**corporate role**: These are roles that are fetch from an internal source such as a local VCS repository.  These are are often business specific and proprietary.
+**corporate role**: These are roles that are fetch from an internal source
+such as a local VCS repository.  These are are often business specific and proprietary.
 
-**wrapper role**: These are joint roles that combine tasks for more then one application suite.  Often a combination of one or more external and/or corporate roles.
+**wrapper role**: These are joint roles that combine tasks for more then one
+application suite.  Often a combination of one or more external
+and/or corporate roles.
 
-**project**: A logical collection of Playbooks, roles, inventory, groupi\_vars and host\_vars for a given corporate function.
+**project**: A logical collection of Playbooks, roles, inventory, groupi\_vars
+and host\_vars for a given corporate function.
 
-  * The inclusion of a node in multiple projects inventories should be limited, as the scope of the projects my overlap and provide undesired configuration.
+* The inclusion of a node in multiple projects inventories should be limited,
+as the scope of the projects my overlap and provide undesired configuration.
 
-**site**: Different location often geographically distributed, such as multiple data centers.
+**site**: Different location often geographically distributed,
+such as multiple data centers.
 
-**environment**: Also sometimes called tiers in a software deployment pipeline.  Often consist of development,Integration,SI/QA,Stage,Test,Prod
+**environment**: Also sometimes called tiers in a software deployment pipeline.
+Often consist of development,Integration,SI/QA,Stage,Test,Prod
 
-**domain**: A logical grouping defined by network address space, often further segregated by sub-domains.  Such as foo.dev.example.com, foo.ci.example.dev, foo.qa.example.dev
+**domain**: A logical grouping defined by network address space, often further
+segregated by sub-domains. Such as foo.dev.example.com, foo.ci.example.dev, foo.qa.example.dev
 
 ## Ansible Projects
 
