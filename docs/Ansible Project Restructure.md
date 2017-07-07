@@ -85,20 +85,28 @@ Thus some projects can have a very simple inventory structure with only a minima
 
 ### Inventory Structure Considerations
 
-The most important consideration when creating your inventory structure is what group specific data (group_vars) your project will need. Some examples are groups based on the purpose/function (role/project) of the hosts, geography, datacenter location or environment (if applicable).
+The most important consideration when creating your inventory structure is what
+group specific data (group\_vars) your project will need. Some examples are
+groups based on the purpose/function (role/project) of the
+hosts, geography, datacenter location or environment (if applicable).
 
-The second defining consideration is Playbook execution orchestration.  These are groups used in combination with [patterns](http://docs.ansible.com/ansible/intro_patterns.html) to choose which hosts will be targeted during a specific execution run of your Playbooks.
+The second defining consideration is Playbook execution orchestration.
+These are groups used in combination with
+[patterns](http://docs.ansible.com/ansible/intro_patterns.html) to
+choose which hosts will be targeted during a specific execution run of your Playbooks.
 
 These defining considerations often overlap allowing for a streamline inventory structure.
 
 ### Multistage Environment Inventory Structure
 
-One approach when working with multistage environments is to completely separate each environment into its own inventory structure including separate `group_vars`/`host_vars`.
+One approach when working with multistage environments is to completely
+separate each environment into its own inventory structure including separate `group_vars`/`host_vars`.
 
-This approach can be molded to fit your specific projects needs with groups per site, application or other organizational structure required.
+This approach can be molded to fit your specific projects needs with groups
+per site, application or other organizational structure required.
 
-This options requires that cross environment variables be stored in a common file that is symlink'd within each environment sub structure.
-
+This options requires that cross environment variables be stored in a
+common file that is symlink'd within each environment sub structure.
 
 ```yaml
 projects/

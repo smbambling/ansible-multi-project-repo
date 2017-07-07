@@ -5,4 +5,4 @@
   become: True
 
   roles:
-    - { role: base }
+    - {role: base}

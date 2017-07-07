@@ -1,7 +1,15 @@
 #!/usr/bin/env bash
 
 OS=$(uname -s)
-if [[ "$OS" == "Darwin" ]]; then
+if [[ "$OS" == "OpenBSD" || "$OS" == "FreeBSD" ]]; then
+    echo "Detected $OS..."
+    echo "Setting needed ENV to build gem native extensions..."
+    export BSD_INSTALL_PROGRAM="/usr/bin/install  -s -m 555"
+    export BSD_INSTALL_LIB="/usr/bin/install  -s -m 444"
+    export BSD_INSTALL_SCRIPT="/usr/bin/install  -m 555"
+    export BSD_INSTALL_DATA="/usr/bin/install  -m 0644"
+    export BSD_INSTALL_MAN="/usr/bin/install  -m 444"
+elif [[ "$OS" == "Darwin" ]]; then
     if brew ls --versions openssl > /dev/null; then
         echo "Detected $OS..."
         echo "Setting needed ENV to build psycopg2..."
@@ -15,7 +23,26 @@ fi
 #  Dependency Checks  #
 #######################
 
-cmd_list=('ruby' 'bundle' 'virtualenv' 'vagrant')
+total_nameservers=$(grep -c 'nameserver' /etc/resolv.conf || :)
+total_local_nameservers=$(grep -c 'nameserver 127' /etc/resolv.conf || :)
+if [[ $total_local_nameservers -gt 0 && $total_nameservers -eq 1 ]]; then
+    echo "Warning!"
+    echo "It looks like you only have a loopback nameserver defined in /etc/resolv.conf"
+    echo "DNS resolution inside Docker containers will fail."
+    echo "You will need to set correct resolvers."
+    echo "This is usually caused by NetworkManager using dnsmasq to handle"
+    echo "setting up your resolvers."
+    echo
+    read -rp "Press any key to continue."
+fi
+
+cmd_list=(
+  'ruby ruby2.2 ruby2.1 ruby2.0'
+  'bundle'
+  'virtualenv virtualenv-2.7 virtualenv-2.5'
+  'docker docker.io'
+  'vagrant'
+)
 
 # Function to check if referenced command exists
 cmd_exists() {
@@ -23,18 +50,30 @@ cmd_exists() {
     echo 'WARNING: No command argument was passed to verify exists'
   fi
 
-  cmd=${1}
-  hash "${cmd}" >&/dev/null # portable 'which'
-  rc=$?
-  if [ "${rc}" != "0" ]; then
-    echo "Unable to find ${cmd} in your PATH"
+  #cmds=($(echo "${1}"))
+  cmds=($(printf '%s' "${1}"))
+  fail_counter=0
+  for cmd in "${cmds[@]}"; do
+    command -v "${cmd}" >&/dev/null # portable 'which'
+    rc=$?
+    if [ "${rc}" != "0" ]; then
+      fail_counter=$((fail_counter+1))
+    fi
+  done
+
+  if [ "${fail_counter}" -ge "${#cmds[@]}" ]; then
+    echo "Unable to find one of the required commands [${cmds[*]}] in your PATH"
     return 1
   fi
 }
 
 # Verify that referenced commands exist on the system
-for cmd in ${cmd_list[@]}; do
-  cmd_exists "$cmd"
+for cmd in "${cmd_list[@]}"; do
+  cmd_exists "${cmd[@]}"
+  # shellcheck disable=SC2181
+  if [ $? -ne 0 ]; then
+    return $?
+  fi
 done
 
 #######################
@@ -83,7 +122,6 @@ else
     echo "Found existing virtualenv, using that instead."
 fi
 
-# shellcheck disable=SC1091
 . ./.venv/bin/activate
 run pip install --upgrade pip
 run pip install --upgrade setuptools
@@ -92,7 +130,8 @@ run bundle install --path ./.vendor/bundle
 run ansible-galaxy install -r requirements.yml -p galaxy_roles -f
 
 # Now, we need to set it so that we can use bundle exec from anywhere
-export BUNDLE_GEMFILE="$(pwd)/Gemfile"
+export BUNDLE_GEMFILE
+BUNDLE_GEMFILE="$(pwd)/Gemfile"
 
 # We also want to unset this when we run deactivate, but virtualenv provides that function.
 # We'll need to overwrite it here and export it
