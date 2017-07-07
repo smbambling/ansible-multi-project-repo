@@ -1,0 +1,54 @@
+---
+molecule:
+  ignore_paths:
+    - .git
+    - .vagrant
+    - .molecule
+    - ../../galaxy_roles
+
+driver:
+  name: vagrant
+
+vagrant:
+  platforms:
+    - name: centos6
+      box: centos/6
+
+    - name: centos7
+      box: centos/7
+
+  providers:
+    - name: virtualbox
+      type: virtualbox
+      options:
+        memory: 1024
+        cpus: 2
+
+  instances:
+    - name: centos6.site1.example.dev
+      platform: centos/6
+      ansible_groups:
+        - ci_testing
+      interfaces:
+        - network_name: private_network
+          type: dhcp
+          auto_config: true
+
+    - name: centos7.site2.example.dev
+      platform: centos/7
+      ansible_groups:
+        - ci_testing
+      interfaces:
+        - network_name: private_network
+          type: dhcp
+          auto_config: true
+
+verifier:
+  name: serverspec
+ansible:
+  config_file: ../../ansible.cfg
+  playbook: ../../projects/base/playbooks/full_base.yml
+  group_vars:
+    all:
+
+# vim: set filetype=ansible:
