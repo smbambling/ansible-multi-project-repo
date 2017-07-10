@@ -1,0 +1,6 @@
+---
+all:
+  children:
+    site4:
+      hosts:
+        host1.site4.example.dev:

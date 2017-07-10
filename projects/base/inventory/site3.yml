@@ -1,0 +1,12 @@
+---
+all:
+  children:
+    site3:
+      children:
+        silo1:
+          hosts:
+            host1.site3.example.dev:
+            hosts3.site3.example.dev:
+        silo2:
+          hosts:
+            hosts2.site3.example.dev:
