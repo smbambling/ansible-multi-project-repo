@@ -9,7 +9,7 @@
   - name: Set resolv.conf configuration
     template:
       dest: /etc/resolv.conf
-      src: resolv_conf.j2
+      src: "{{ role_path }}/templates/resolv_conf.j2"
       owner: 0
       group: 0
       mode: 0644
