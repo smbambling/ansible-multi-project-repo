@@ -10,14 +10,14 @@ accounts_users:
       - key: 'ssh-dss AAAAB3NzaC1kc3MAAACBANsqnXX9D6FzWn6SMN06GJnWhSOZapBtyuA8BvYL4CxZVJEdGXbqtfJcVaAlStNiRGAkGwL9v83h9VJE4z854Ybqr1LBUfk24fvWKRnTSJlqetGuqe9rCBYNcq2ZnUQh8JARpRLmmiV9BExv7dADSXDJVYiNcWMXUETjjWv1c7FnAAAAFQD+8iXWIj8naIxVlzbColoJWOAukwAAAIAZjNcJiu2BthfDAARxRk7N6Wb6NLKLyc7QIqLiTDipjHGLLN7qtunjNL35G9+Q30HLje74x8eI2NAwgGPcEiN5HVP2e7WdhIQ6gjBJhXmmkAntnDLn+spkmJAi14JYCNlINGJGF+CHFghNZUHES8Bi6Ge0KxMC1vpFgKRfyUMSwwAAAIB647d9+/mNUUU0P9k6NVwcw8O3Bqdc7yFlVJcJnPQuxY5OnVk5lPmv8nzus8l9eVE2CVbO4oD3E8Ad0ZjCG3Dqvg6xhW6Crj9r9+w7zTLGEI5s7sMZfQPOBBTljkPSsokoX5TIqS2zW0haQudS9yMfoG4YR2kZ674+Ln5lBT1cfw== smbambling@xi.arin.net'
         state: absent
       - key: 'ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQC63w65JAXe/bejLToKoawV8tVueMHvoKqAgW77cxxF/DcfaTUOwqks63Lo1ivTZuoHwFgeAElUsL4u4BtS2fGz4nW19+w4tJ/OcVRpvYTDBAzb7o0bnw6JbyoWriqpRv/vzl5b9rz0AuLtZQda0FdmogQoZwFc35uEofbQX/N0lJPKoRoDD785QZZ5vOiPxdCzejf84zzxI3WXH25OjID7VaauR3ZQN97O44DEuKW9/OYs6/3Qyoqdkta/29TnW9C4AqGH5J40DwPBPDqkmsz3a5XWd4uFCaVoKUX/+6On3b8TtkucfUJX7tjtC0h35JMEdiMAfAVFE+yJ4Ge+y4O+LBx3QUV3qazvvqOU2+DakjPvx2+KHlZkhs3KNncuI78JV6ppphg4EABPsrjL5iO8S7Pqs3tRJReI17eDvc4iityY8etgLcv9d4/gMyjr4mSGzj7/zq7i7MOZYz/RP6Crt8E2VkzFhPTLSOCBthfDEyM7X67G2/oJ8qdUvyomeoG74wyGQURK+Ark5B3Oke16ThvVuzxXD6Z85axgaFeLaoNffooCYysQFzGEExFFoQbGkMBlA6V79VR7WrRoNnYvxU7dqE0UbR7WZoRSta+OMon9kz9XzKFp43KiN9+eIsC3jvoLCh53Vk0hBIYzdQwpRY8Le26xC9SIAHBezVtglw== arin_01272016'
-      #  - name: octavis
-      #    comment: 'Octavis Jones'
-      #    uid: 1007
-      #    password: 'foobar'
-      #    groups:
-      #      - wheel
-      #    authorized_keys:
-      #      - key: 'ssh-dss asd;lfkjas;dlkfjasdfkasd;flkja;sdlfkfoobar'
+  - name: octavis
+    comment: 'Octavis Jones'
+    uid: 1007
+    password: 'foobar'
+    groups:
+      - wheel
+    authorized_keys:
+      - key: 'ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQC63w65JAXe/bejLToKoawV8tVueMHvoKqAgW77cxxF/DcfaTUOwqks63Lo1ivTZuoHwFgeAElUsL4u4BtS2fGz4nW19+w4tJ/OcVRpvYTDBAzb7o0bnw6JbyoWriqpRv/vzl5b9rz0AuLtZQda0FdmogQoZwFc35uEofbQX/N0lJPKoRoDD785QZZ5vOiPxdCzejf84zzxI3WXH25OjID7VaauR3ZQN97O44DEuKW9/OYs6/3Qyoqdkta/29TnW9C4AqGH5J40DwPBPDqkmsz3a5XWd4uFCaVoKUX/+6On3b8TtkucfUJX7tjtC0h35JMEdiMAfAVFE+yJ4Ge+y4O+LBx3QUV3qazvvqOU2+DakjPvx2+KHlZkhs3KNncuI78JV6ppphg4EABPsrjL5iO8S7Pqs3tRJReI17eDvc4iityY8etgLcv9d4/gMyjr4mSGzj7/zq7i7MOZYz/RP6Crt8E2VkzFhPTLSOCBthfDEyM7X67G2/oJ8qdUvyomeoG74wyGQURK+Ark5B3Oke16ThvVuzxXD6Z85axgaFeLaoNffooCYysQFzGEExFFoQbGkMBlA6V79VR7WrRoNnYvxU7dqE0UbR7WZoRSta+OMon9kz9XzKFp43KiN9+eIsC3jvoLCh53Vk0hBIYzdQwpRY8Le26xC9SIAHBezVtglw== arin_TSETWASDFASDFASDFASDF6'
       #  - name: bellante
       #    comment: 'Bellante'
       #    uid: 1008

@@ -6,4 +6,5 @@
 
   roles:
     - {role: resolv_conf}
+    - {role: accounts}
     - {role: base}
