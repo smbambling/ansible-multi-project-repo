@@ -1,11 +1,11 @@
 ---
-  - name: Include resolv_conf variables
-    include_vars:
-      file: ../../resolv_conf/defaults/main.yml
-      name: base_resolv_conf
-
-  - name: Include the resolv_conf role
-    include: ../../resolv_conf/tasks/main.yml
+#  - name: Include resolv_conf variables
+#    include_vars:
+#      file: ../../resolv_conf/defaults/main.yml
+#      name: base_resolv_conf
+#
+#  - name: Include the resolv_conf role
+#    include: ../../resolv_conf/tasks/main.yml
 
   #  - name: Include resolv_conf role
   #  include_role:

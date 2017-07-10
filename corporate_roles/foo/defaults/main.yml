@@ -1,0 +1,21 @@
+---
+# Default location of the resolv.conf
+resolv_conf_file: /etc/resolv.conf
+
+# Default nameservers
+resolv_conf_nameserver:
+  - 8.8.8.8
+  - 8.8.4.4
+
+# Default domain
+resolv_conf_domain:
+  - "{{ ansible_domain }}"
+
+# Default search list
+resolv_conf_search: []
+
+# Defautl sort list
+resolv_conf_sortlist: []
+
+# Default options
+resolv_conf_options: []

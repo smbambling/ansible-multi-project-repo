@@ -5,4 +5,5 @@
   become: True
 
   roles:
+    - {role: resolv_conf}
     - {role: base}

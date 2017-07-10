@@ -1,0 +1,11 @@
+---
+# Include the ARIN Base Playbook
+- include: ../../base/playbooks/full_base.yml
+
+- name: AC Test Role
+  hosts: all
+  gather_facts: True
+  become: True
+
+  roles:
+    - {role: foo}

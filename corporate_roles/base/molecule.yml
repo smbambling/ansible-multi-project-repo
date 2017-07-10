@@ -47,7 +47,8 @@ verifier:
   name: serverspec
 ansible:
   config_file: ../../projects/base/ansible.cfg
-  playbook: ../../projects/base/playbooks/full_base.yml
+  playbook: ../../projects/ac/playbooks/ac.yml
+  #playbook: ../../projects/base/playbooks/full_base.yml
   group_vars:
     all:
 
