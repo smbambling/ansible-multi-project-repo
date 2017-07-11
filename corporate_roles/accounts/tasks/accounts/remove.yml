@@ -1,23 +1,13 @@
 ---
   - name: "Remove user {{ item.name }}"
     user:
-      append: "{{ item.append | default(False) }}"
       name: "{{ item.name }}"
       uid: "{{ item.uid }}"
-      state: "{{ item.state | default('present') }}"
-      comment: "{{ item.comment }}"
-      createhome: "{{ item.createhome | default(True) }}"
-      group: "{{ item.group_name | default(item.name) }}"
-      groups: "{{ (item.groups | default([])) | join(',') }}"
-      home: "{{ item.home | default(omit) }}"
-      shell: "{{ item.shell | default(omit) }}"
+      state: "{{ item.state }}"
       remove: "{{ item.remove | default('no') }}"
-      skeleton: "{{ item.skeleton | default(omit) }}"
-      system: "{{ item.is_system | default(False) }}"
 
   - name: "Remove group {{ item.group_name | default(item.name) }}"
     group:
       name: "{{ item.group_name | default(item.name) }}"
       gid: "{{ item.gid | default(item.uid) }}"
-      state: "{{ item.state | default('present') }}"
-      system: "{{ item.is_system | default(False) }}"
+      state: "{{ item.state }}"

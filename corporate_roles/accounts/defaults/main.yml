@@ -3,7 +3,10 @@ accounts_users:
   - name: smbambling
     comment: 'Steven Bambling'
     uid: 1006
-    password: 'foobar'
+    password:
+      OpenBSD: 'password_hash_openbsd'
+      FreeBSD: 'password_hash_freebsd'
+      RedHat: 'password_hash_redhat'
     groups:
       - wheel
     authorized_keys:
@@ -13,7 +16,7 @@ accounts_users:
   - name: octavis
     comment: 'Octavis Jones'
     uid: 1007
-    password: 'foobar'
+    password: 'default'
     groups:
       - wheel
     state: absent
