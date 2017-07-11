@@ -16,6 +16,8 @@ accounts_users:
     password: 'foobar'
     groups:
       - wheel
+    state: absent
+    remove: yes
     authorized_keys:
       - key: 'ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQC63w65JAXe/bejLToKoawV8tVueMHvoKqAgW77cxxF/DcfaTUOwqks63Lo1ivTZuoHwFgeAElUsL4u4BtS2fGz4nW19+w4tJ/OcVRpvYTDBAzb7o0bnw6JbyoWriqpRv/vzl5b9rz0AuLtZQda0FdmogQoZwFc35uEofbQX/N0lJPKoRoDD785QZZ5vOiPxdCzejf84zzxI3WXH25OjID7VaauR3ZQN97O44DEuKW9/OYs6/3Qyoqdkta/29TnW9C4AqGH5J40DwPBPDqkmsz3a5XWd4uFCaVoKUX/+6On3b8TtkucfUJX7tjtC0h35JMEdiMAfAVFE+yJ4Ge+y4O+LBx3QUV3qazvvqOU2+DakjPvx2+KHlZkhs3KNncuI78JV6ppphg4EABPsrjL5iO8S7Pqs3tRJReI17eDvc4iityY8etgLcv9d4/gMyjr4mSGzj7/zq7i7MOZYz/RP6Crt8E2VkzFhPTLSOCBthfDEyM7X67G2/oJ8qdUvyomeoG74wyGQURK+Ark5B3Oke16ThvVuzxXD6Z85axgaFeLaoNffooCYysQFzGEExFFoQbGkMBlA6V79VR7WrRoNnYvxU7dqE0UbR7WZoRSta+OMon9kz9XzKFp43KiN9+eIsC3jvoLCh53Vk0hBIYzdQwpRY8Le26xC9SIAHBezVtglw== arin_TSETWASDFASDFASDFASDF6'
       #  - name: bellante

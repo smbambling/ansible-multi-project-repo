@@ -1,3 +1,4 @@
 ---
-  - name: Include account.yml
-    include: accounts.yml
+  - name: Include Accounts Tasks
+    include: accounts/accounts.yml
+    with_items: "{{ accounts_users }}"

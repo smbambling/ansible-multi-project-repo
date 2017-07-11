@@ -1,12 +1,5 @@
 ---
-  - name: "Create group {{ item.group_name | default(item.name) }}"
-    group:
-      name: "{{ item.group_name | default(item.name) }}"
-      gid: "{{ item.gid | default(item.uid) }}"
-      state: "{{ item.state | default('present') }}"
-      system: "{{ item.is_system | default(False) }}"
-
-  - name: "Create user {{ item.name }}"
+  - name: "Remove user {{ item.name }}"
     user:
       append: "{{ item.append | default(False) }}"
       name: "{{ item.name }}"
@@ -22,12 +15,9 @@
       skeleton: "{{ item.skeleton | default(omit) }}"
       system: "{{ item.is_system | default(False) }}"
 
-  - name: "Manage SSH authorized keys for {{ item.name }}"
-    authorized_key:
-      key: "{{ auth_key.key }}"
-      state: "{{ auth_key.state | default(omit) }}"
-      user: "{{ item.name }}"
-    with_items:
-      - "{{ item.authorized_keys }}"
-    loop_control:
-      loop_var: auth_key
+  - name: "Remove group {{ item.group_name | default(item.name) }}"
+    group:
+      name: "{{ item.group_name | default(item.name) }}"
+      gid: "{{ item.gid | default(item.uid) }}"
+      state: "{{ item.state | default('present') }}"
+      system: "{{ item.is_system | default(False) }}"

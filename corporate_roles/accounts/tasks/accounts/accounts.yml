@@ -1,0 +1,8 @@
+---
+  - name: Include Create Account Tasks
+    include: create.yml
+    when: item.state | default('present') == 'present'
+
+  - name: Include Remove Accounts Tasks
+    include: remove.yml
+    when: item.state | default('present') == 'absent'
