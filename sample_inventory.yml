@@ -3,49 +3,49 @@ all:
   children:
     whois:
       children:
-        iad:
+        site1:
           children:
-            iad_odd:
+            site1_odd:
               hosts:
-                whoisrws1.iad.arin.net:
-                whoisrws3.iad.arin.net:
-                whoisrws5.iad.arin.net:
-            iad_even:
+                whoisrws1.site1.example.com:
+                whoisrws3.site1.example.com:
+                whoisrws5.site1.example.com:
+            site1_even:
               hosts:
-                whoisrws2.iad.arin.net:
-                whoisrws4.iad.arin.net:
-                whoisrws6.iad.arin.net:
-        sjc:
+                whoisrws2.site1.example.com:
+                whoisrws4.site1.example.com:
+                whoisrws6.site1.example.com:
+        site2:
           children:
-            sjc_odd:
+            site2_odd:
               hosts:
-                whoisrws1.sjc.arin.net:
-                whoisrws3.sjc.arin.net:
-                whoisrws5.sjc.arin.net:
-            sjc_even:
+                whoisrws1.site2.example.com:
+                whoisrws3.site2.example.com:
+                whoisrws5.site2.example.com:
+            site2_even:
               hosts:
-                whoisrws2.sjc.arin.net:
-                whoisrws4.sjc.arin.net:
-                whoisrws6.sjc.arin.net:
-        sea:
+                whoisrws2.site2.example.com:
+                whoisrws4.site2.example.com:
+                whoisrws6.site2.example.com:
+        site3:
           children:
-            sea_odd:
+            site3_odd:
               hosts:
-                whoisrws1.sea.arin.net:
-                whoisrws3.sea.arin.net:
-                whoisrws5.sea.arin.net:
-            sea_even:
+                whoisrws1.site3.example.com:
+                whoisrws3.site3.example.com:
+                whoisrws5.site3.example.com:
+            site3_even:
               hosts:
-                whoisrws2.sea.arin.net:
-                whoisrws4.sea.arin.net:
-                whoisrws6.sea.arin.net:
+                whoisrws2.site3.example.com:
+                whoisrws4.site3.example.com:
+                whoisrws6.site3.example.com:
         even:
           children:
-            sjc_even:
-            iad_even:
-            sea_even:
+            site2_even:
+            site1_even:
+            site3_even:
         odd:
           children:
-            sjc_odd:
-            iad_odd:
-            sea_odd:
+            site2_odd:
+            site1_odd:
+            site3_odd:
